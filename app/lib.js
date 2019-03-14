@@ -12,16 +12,16 @@ let lib = {}
 lib.generateToken = (strLength = 20) => {
   strLength = typeof(strLength) == 'number' && strLength > 0 ? strLength : false
   if (strLength) {
-    possibleChars = 'abcdefghijklomnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012346789';
-    randomString = '';
-    let i = 1;
+    possibleChars = 'abcdefghijklomnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012346789'
+    randomString = ''
+    let i = 1
     while (i <= strLength) {
-      randomString += possibleChars.charAt(Math.floor(Math.random() * Math.floor(possibleChars.length)));
-      i++;
+      randomString += possibleChars.charAt(Math.floor(Math.random() * Math.floor(possibleChars.length)))
+      i++
     }
-    return randomString;
+    return randomString
   } else {
-    return false;
+    return false
   }
 }
 // Input string
