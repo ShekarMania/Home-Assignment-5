@@ -46,7 +46,7 @@ _app.tests.unit['helpers.checkPalindrome should return -1 when wrong inputs are 
 }
 
 // Count all the tests
-_app.countTests = function(){
+_app.countTests = () => {
   let counter = 0
   for(let key in _app.tests){
      if(_app.tests.hasOwnProperty(key)){
@@ -62,7 +62,7 @@ _app.countTests = function(){
 }
 
 // Run all the tests, collecting the errors and successes
-_app.runTests = function(){
+_app.runTests = ()=>{
   let errors = []
   let successes = 0
   let limit = _app.countTests()
@@ -72,12 +72,12 @@ _app.runTests = function(){
        let subTests = _app.tests[key]
        for(let testName in subTests){
           if(subTests.hasOwnProperty(testName)){
-            (function(){
+            (()=>{
               let tmpTestName = testName
               let testValue = subTests[testName]
               // Call the test
               try{
-                testValue(function(){
+                testValue(()=>{
 
                   // If it calls back without throwing, then it succeeded, so log it in green
                   console.log('\x1b[32m%s\x1b[0m',tmpTestName)
@@ -108,7 +108,7 @@ _app.runTests = function(){
 
 
 // Product a test outcome report
-_app.produceTestReport = function(limit,successes,errors){
+_app.produceTestReport = (limit,successes,errors) => {
   console.log("")
   console.log("--------BEGIN TEST REPORT--------")
   console.log("")
@@ -121,7 +121,7 @@ _app.produceTestReport = function(limit,successes,errors){
   if(errors.length > 0){
     console.log("--------BEGIN ERROR DETAILS--------")
     console.log("")
-    errors.forEach(function(testError){
+    errors.forEach((testError) => {
       console.log('\x1b[31m%s\x1b[0m',testError.name)
       console.log(testError.error)
       console.log("")
